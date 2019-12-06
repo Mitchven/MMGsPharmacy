@@ -90,7 +90,7 @@ public class JCustoDash extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText(" MMG's Pharmacy");
+        jLabel1.setText("MMG's Pharmacy");
 
         signout.setBackground(new java.awt.Color(0, 255, 255));
         signout.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N

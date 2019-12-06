@@ -32,9 +32,9 @@ public class JLogin extends javax.swing.JFrame {
         logPasT = new javax.swing.JLabel();
         logUserF = new javax.swing.JTextField();
         logSignIn = new javax.swing.JButton();
-        logSignUp = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         logPasF = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,10 +66,10 @@ public class JLogin extends javax.swing.JFrame {
         );
 
         logUserT.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        logUserT.setText("Username");
+        logUserT.setText("Username:");
 
         logPasT.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        logPasT.setText("Password");
+        logPasT.setText("Password:");
 
         logUserF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,23 +78,25 @@ public class JLogin extends javax.swing.JFrame {
         });
 
         logSignIn.setBackground(new java.awt.Color(0, 255, 255));
-        logSignIn.setText("Sign In");
+        logSignIn.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        logSignIn.setText("LOGIN");
         logSignIn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 logSignInMouseClicked(evt);
             }
         });
 
-        logSignUp.setBackground(new java.awt.Color(0, 255, 255));
-        logSignUp.setText("Sign Up");
-        logSignUp.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel2.setText("Don't have an account ? ");
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 0, 51));
+        jLabel3.setText("REGISTER");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logSignUpMouseClicked(evt);
+                jLabel3MouseClicked(evt);
             }
         });
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Don't have an account ? ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,21 +106,24 @@ public class JLogin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
+                        .addGap(39, 39, 39)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(logPasT)
-                            .addComponent(logUserT))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(logUserT)
+                            .addComponent(logPasT))
+                        .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(logUserF)
                                 .addComponent(logPasF, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
-                            .addComponent(logSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(logSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(logSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(jLabel2)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                        .addGap(104, 104, 104)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,17 +134,17 @@ public class JLogin extends javax.swing.JFrame {
                         .addGap(53, 53, 53)
                         .addComponent(logUserT))
                     .addComponent(logUserF, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(logPasT)
-                    .addComponent(logPasF, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addComponent(logSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(logSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(logPasF, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logPasT))
+                .addGap(38, 38, 38)
+                .addComponent(logSignIn)
+                .addGap(64, 64, 64)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,13 +170,6 @@ public class JLogin extends javax.swing.JFrame {
     private void logUserFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logUserFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_logUserFActionPerformed
-
-    private void logSignUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logSignUpMouseClicked
-        // TODO add your handling code here:
-        JRegister reg = new JRegister();
-        reg.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_logSignUpMouseClicked
 
     private void logSignInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logSignInMouseClicked
         // TODO add your handling code here:
@@ -227,6 +225,12 @@ public class JLogin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_logSignInMouseClicked
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        JRegister reg = new JRegister();
+        reg.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -265,12 +269,12 @@ public class JLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField logPasF;
     private javax.swing.JLabel logPasT;
     private javax.swing.JButton logSignIn;
-    private javax.swing.JButton logSignUp;
     private javax.swing.JTextField logUserF;
     private javax.swing.JLabel logUserT;
     // End of variables declaration//GEN-END:variables

@@ -50,18 +50,14 @@ public class JRegister extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         userT = new javax.swing.JLabel();
-        lnameT = new javax.swing.JLabel();
-        fnameT = new javax.swing.JLabel();
         passT = new javax.swing.JLabel();
         ageT = new javax.swing.JLabel();
         userF = new javax.swing.JTextField();
-        lnameF = new javax.swing.JTextField();
-        fnameF = new javax.swing.JTextField();
         ageF = new javax.swing.JTextField();
         regSignUp = new javax.swing.JButton();
-        regSingIn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         passF = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +74,7 @@ public class JRegister extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(169, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(185, 185, 185))
         );
@@ -93,12 +89,6 @@ public class JRegister extends javax.swing.JFrame {
         userT.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         userT.setText("Username:");
 
-        lnameT.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        lnameT.setText("Lastname:");
-
-        fnameT.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        fnameT.setText("Firstname:");
-
         passT.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         passT.setText("Password:");
 
@@ -106,21 +96,15 @@ public class JRegister extends javax.swing.JFrame {
         ageT.setText("Age:");
 
         regSignUp.setBackground(new java.awt.Color(0, 255, 255));
-        regSignUp.setText("Sign Up");
+        regSignUp.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        regSignUp.setText("REGISTER");
         regSignUp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 regSignUpMouseClicked(evt);
             }
         });
 
-        regSingIn.setBackground(new java.awt.Color(0, 255, 255));
-        regSingIn.setText("Sign In");
-        regSingIn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regSingInMouseClicked(evt);
-            }
-        });
-
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel2.setText("Already have an account ?");
 
         passF.addActionListener(new java.awt.event.ActionListener() {
@@ -129,70 +113,71 @@ public class JRegister extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 0, 51));
+        jLabel3.setText("LOGIN");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(regSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                    .addComponent(regSingIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(197, 197, 197))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userT)
-                    .addComponent(lnameT)
-                    .addComponent(fnameT)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(ageT)
-                        .addComponent(passT)))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2)
-                    .addComponent(userF)
-                    .addComponent(lnameF)
-                    .addComponent(fnameF)
-                    .addComponent(ageF)
-                    .addComponent(passF, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ageT)
+                            .addComponent(passT)
+                            .addComponent(userT))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(userF)
+                            .addComponent(passF, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                            .addComponent(ageF, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(regSignUp)
+                .addGap(157, 157, 157))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(37, 37, 37)
-                                        .addComponent(userT))
-                                    .addComponent(userF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lnameT))
-                            .addComponent(lnameF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fnameT))
-                    .addComponent(fnameF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(userF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(userT)
+                        .addGap(44, 44, 44)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(passT)
                     .addComponent(passF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ageF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ageT))
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
                 .addComponent(regSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(14, 14, 14)
-                .addComponent(regSingIn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -219,13 +204,11 @@ public class JRegister extends javax.swing.JFrame {
         // TODO add your handling code here:
         user = userF.getText();
         pass = passF.getText();
-        String fname = fnameF.getText();
-        String lname = lnameF.getText();
         String age1 = ageF.getText();
 
         Controller acc = new Controller();
 
-        if (acc.registerVerification(user, fname, lname, pass, age1) == true) {
+        if (acc.verifyRegister(user, pass, age1) == true) {
             JOptionPane.showMessageDialog(rootPane, "Successfully registered!");
             this.setVisible(false);
             JLogin log = new JLogin();
@@ -285,12 +268,11 @@ public class JRegister extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passFActionPerformed
 
-    private void regSingInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regSingInMouseClicked
-        // TODO add your handling code here:
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         JLogin log = new JLogin();
         log.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_regSingInMouseClicked
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -331,18 +313,14 @@ public class JRegister extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ageF;
     private javax.swing.JLabel ageT;
-    private javax.swing.JTextField fnameF;
-    private javax.swing.JLabel fnameT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField lnameF;
-    private javax.swing.JLabel lnameT;
     private javax.swing.JPasswordField passF;
     private javax.swing.JLabel passT;
     private javax.swing.JButton regSignUp;
-    private javax.swing.JButton regSingIn;
     private javax.swing.JTextField userF;
     private javax.swing.JLabel userT;
     // End of variables declaration//GEN-END:variables

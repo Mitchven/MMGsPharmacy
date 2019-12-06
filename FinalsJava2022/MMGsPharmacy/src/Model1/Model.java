@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
  
 public class Model {
 
-    public boolean register(String user, String lname, String fname, String pass, int age) {
+    public boolean register(String user, String pass, int age) {
         JRegister r = new JRegister();
         boolean success = false;
         try {
@@ -17,7 +17,7 @@ public class Model {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/mmgspharmacy", "root", "");
             stmt = con.createStatement();
-            String sql = "INSERT INTO `account`(`username`, `lname`, `fname`, `password`, `age`) VALUES ('" + user + "','" + lname + "','" + fname + "','" + pass + "'," + age + ")";
+            String sql = "INSERT INTO `account`(`username`, `password`, `age`) VALUES ('" + user + "','" + "','" + pass + "'," + age + ")";
             stmt.executeUpdate(sql);
             con.close();
             success = true;

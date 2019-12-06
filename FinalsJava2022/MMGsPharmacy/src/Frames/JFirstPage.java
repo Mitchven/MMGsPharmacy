@@ -58,16 +58,21 @@ public class JFirstPage extends javax.swing.JFrame {
 
         signin.setBackground(new java.awt.Color(0, 255, 255));
         signin.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        signin.setText("Sign In");
+        signin.setText("LOGIN");
         signin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 signinMouseClicked(evt);
             }
         });
+        signin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signinActionPerformed(evt);
+            }
+        });
 
         signup.setBackground(new java.awt.Color(0, 255, 255));
         signup.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        signup.setText("Sign Up");
+        signup.setText("REGISTER");
         signup.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 signupMouseClicked(evt);
@@ -130,6 +135,10 @@ public class JFirstPage extends javax.swing.JFrame {
         register.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_signupMouseClicked
+
+    private void signinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_signinActionPerformed
 
     /**
      * @param args the command line arguments

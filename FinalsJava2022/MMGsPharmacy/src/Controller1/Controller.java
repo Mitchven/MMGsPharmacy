@@ -13,22 +13,22 @@ public class Controller {
     Model acc = new Model();
 
     // For Registratin Verification
-    public boolean registerVerification(String user, String fname, String lname, String pass, String age1) {
+    public boolean verifyRegister(String user, String pass, String age1) {
         JRegister r = new JRegister();
         boolean success = false;
-        if (user.length() > 0 && pass.length() >= 8 && fname.length() > 0 && lname.length() > 0) {
+        if (user.length() > 0 && pass.length() >= 8) {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost/mmgspharmacy", "root", "");
                 Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * FROM `account` WHERE username='" + user + "'");
+                ResultSet rs = stmt.executeQuery("SELECT * FROM `user` WHERE username='" + user + "'");
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(r, "Username is already taken!", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     try {
                         int age = Integer.parseInt(age1);
                         if (age >= 18 && age <= 130) {
-                            success = acc.register(user, fname, lname, pass, age);
+                            success = acc.register(user, pass, age);
                             return success;
                         } else {
                             JOptionPane.showMessageDialog(r, "Minor is not ALLOWED", "Error", JOptionPane.ERROR_MESSAGE);
