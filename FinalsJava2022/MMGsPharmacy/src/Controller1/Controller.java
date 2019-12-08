@@ -1,4 +1,3 @@
-
 package Controller1;
 
 import Frames.*;
@@ -7,14 +6,13 @@ import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
-
 public class Controller {
 
     Model acc = new Model();
 
     // For Registratin Verification
     public boolean verifyRegister(String user, String pass, String age1) {
-        JRegister r = new JRegister();
+        Register r = new Register();
         boolean success = false;
         if (user.length() > 0 && pass.length() >= 8) {
             try {
@@ -53,26 +51,26 @@ public class Controller {
     }
 
     // For Admin Add Medicine
-    public boolean addMedicine(String name, String bname, String gname, String type, String price1, String stock1) {
-        JAdminAdd a = new JAdminAdd();
+    public boolean addMedicine(String gname, String bname, String type, String price1, String quantity) {
+        PharmacistsAdd a = new PharmacistsAdd();
         boolean success = false;
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/mmgspharmacy", "root", "");
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM `medicine` WHERE name='" + name + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `medicine` WHERE genericName='" + gname + "'");
 
             if (rs.next()) {
-                JOptionPane.showMessageDialog(a, "Medicine Name already existed!\nUpdate " + name, "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(a, "Medicine Name already existed!\nUpdate " + gname, "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                if (name.length() > 0 && bname.length() > 0 && gname.length() > 0 && type.length() > 0) {
+                if (gname.length() > 0 && bname.length() > 0 && type.length() > 0) {
                     if (type.matches("Headache Medicine") || type.matches("Allergies Medicine") || type.matches("Body Pain Medicine")) {
                         try {
                             double price = Double.parseDouble(price1);
                             try {
-                                int stock = Integer.parseInt(stock1);
-                                success = acc.addMedicine(name, bname, gname, type, price, stock);
+                                int stock = Integer.parseInt(quantity);
+                                success = acc.addMedicine(gname, bname, type, price, stock);
                                 return success;
 
                             } catch (HeadlessException | NumberFormatException e) {
@@ -97,7 +95,7 @@ public class Controller {
 
     // For Admin Remove Medicine
     public boolean removeMedicine(String ID) {
-        JAdminRem r = new JAdminRem();
+        PharmacistsDelete r = new PharmacistsDelete();
         boolean success = false;
         boolean exist = false;
 
@@ -105,12 +103,12 @@ public class Controller {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/mmgspharmacy", "root", "");
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM `medicine` WHERE Id='" + ID + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `medicine` WHERE ID='" + ID + "'");
 
             while (rs.next()) {
                 try {
                     int id = Integer.parseInt(ID);
-                    if (rs.getString("Id").equals(ID)) {
+                    if (rs.getString("ID").equals(ID)) {
                         try {
                             exist = true;
                             return success = acc.removeMedicine(id);
@@ -131,79 +129,8 @@ public class Controller {
         return success;
     }
 
-    // For Admin Update Medicine
-    public boolean updateMed(String ID, String name, String bname, String gname, String type, String price1, String stock1) {
-        JAdminUpd u = new JAdminUpd();
-        boolean success = false;
 
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/mmgspharmacy", "root", "");
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM `medicine` WHERE `Id`=" + ID);
-
-        } catch (ClassNotFoundException | SQLException | HeadlessException e) {
-            JOptionPane.showMessageDialog(u, "Error connecting to database", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        return success;
-    }
-
-//if (rs.next()) {
-//                System.out.println("Successfully connected");
-//                if (name.length() > 0 && bname.length() > 0 && gname.length() > 0 && type.length() > 0) {
-//                    if (type.equals("Headache Medicine") || type.equals("Allergies Medicine") || type.equals("Body Pain Medicine")) {
-//                        try {
-//                            price = Double.parseDouble(priceF.getText());
-//                            priceF.requestFocusInWindow();
-//                            stock = Integer.parseInt(stockF.getText());
-//                            stockF.requestFocusInWindow();
-//                            if (price > 0 && stock > 0) {
-////                            String sql = "INSERT INTO `medicine`( `name`, `bname`, `gname`, `type`, `price`, `stock`) VALUES ('" + name + "','" + bname + "','" + gname + "','" + type + "','" + price + "'," + stock + ")";
-//                            String sql = "UPDATE `medicine` SET `name`='" + name + "',`bname`='" + bname + "',`gname`='" + gname + "',`type`='" + type + "',`price`=" + price + ",`stock`="+stock;
-//                            stmt.executeUpdate(sql);
-//                            JOptionPane.showMessageDialog(rootPane, "Medicine Updated Successfully");
-//                            JViewMed view = new JViewMed();
-//                            view.setVisible(true);
-//                            this.setVisible(false);
-//                            con.close();
-//
-//                        } else {
-//                            JOptionPane.showMessageDialog(rootPane, "Number less than zero is not valid", "Error", JOptionPane.ERROR_MESSAGE);
-//                        }
-//                        } catch (NumberFormatException z) {
-//                            JOptionPane.showMessageDialog(rootPane, "Numbers Only", "Error", JOptionPane.ERROR_MESSAGE);
-//                            priceF.setText("");
-//                            priceF.requestFocusInWindow();
-//                            stockF.setText("");
-//                            stockF.requestFocusInWindow();
-//                            idF.setText("");
-//                            idF.requestFocusInWindow();
-//                        }
-//                        
-//                    } else {
-//                        JOptionPane.showMessageDialog(rootPane, "For the Type\nChoose of the three 'Allergies Medicine' or 'Body Pain Medicine' or 'Headache Medicine' ", "Error", JOptionPane.ERROR_MESSAGE);
-//                    }
-//                } else {
-//                    JOptionPane.showMessageDialog(rootPane, "Fill Up Everything", "Error", JOptionPane.ERROR_MESSAGE);
-//                }
-//                con.close();
-//            } else {
-////                JOptionPane.showMessageDialog(rootPane, "Medicine Name already existed!\nUpdate " + name);
-//            }
-//        } catch (HeadlessException | ClassNotFoundException | SQLException e) {
-//            System.out.println(e);
-//        }
-//            
-//            
-//            
-//            
-//            
-//            
-//        } catch(NumberFormatException e){
-//            JOptionPane.showMessageDialog(rootPane,"ID must be a number!", "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-// Order Medicine
-    public boolean order(String uname,String id, String quantity) {
+      public boolean purchase(String uname, String id2, String quantity) {
         boolean success = false;
         boolean exist = false;
 
@@ -211,23 +138,28 @@ public class Controller {
 
             int qty = Integer.parseInt(quantity);
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/mmgspharmacy", "root", "");
-                Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * FROM `medicine` WHERE id='" + id + "'");
+                int id = Integer.parseInt(id2);
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost/mmgspharmacy", "root", "");
+                    Statement stmt = con.createStatement();
+                    ResultSet rs = stmt.executeQuery("SELECT * FROM `medicine` WHERE ID='" + id + "'");
 
-                while (rs.next()) {
-                    int stock = rs.getInt("stock");
-                    double price = rs.getDouble("price");
-                    if (rs.getString("id").equals(id)) {
-                        exist = true;
-                        return success = acc.order(uname ,id, qty);
+                    while (rs.next()) {
+                        int stock = rs.getInt("quantity");
+                        double price = rs.getDouble("price");
+                        if (rs.getInt("ID") == id) {
+                            exist = true;
+                            return success = acc.purchase(uname, id, qty);
+                        }
+                        break;
                     }
-                    break;
-                }
+                    if (exist == false) {
+                        JOptionPane.showMessageDialog(null, "Medicine do not exist!", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
 
-                if (exist == false) {
-                    JOptionPane.showMessageDialog(null, "Medicine do not exist!", "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "ID should be a number!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             } catch (ClassNotFoundException | SQLException e) {

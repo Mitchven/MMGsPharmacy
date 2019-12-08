@@ -1,12 +1,12 @@
 
 package Frames;
 
-public class JFirstPage extends javax.swing.JFrame {
+public class FirstPage extends javax.swing.JFrame {
 
     /**
      * Creates new form JFirstPage
      */
-    public JFirstPage() {
+    public FirstPage() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -124,14 +124,14 @@ public class JFirstPage extends javax.swing.JFrame {
 
     private void signinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinMouseClicked
         // TODO add your handling code here:
-        JLogin log = new JLogin();
+        Login log = new Login();
         log.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_signinMouseClicked
 
     private void signupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupMouseClicked
         // TODO add your handling code here:
-        JRegister register = new JRegister();
+        Register register = new Register();
         register.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_signupMouseClicked
@@ -157,20 +157,21 @@ public class JFirstPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFirstPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FirstPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFirstPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FirstPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFirstPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FirstPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFirstPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FirstPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFirstPage().setVisible(true);
+                new FirstPage().setVisible(true);
             }
         });
     }

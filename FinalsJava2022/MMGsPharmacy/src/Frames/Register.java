@@ -4,11 +4,11 @@ package Frames;
 import Controller1.*;
 import javax.swing.JOptionPane;
 
-public class JRegister extends javax.swing.JFrame {
+public class Register extends javax.swing.JFrame {
 
     static String user, pass;
 
-    public JRegister(String user, String pass) {
+    public Register(String user, String pass) {
         this.user = user;
         this.pass = pass;
     }
@@ -18,7 +18,7 @@ public class JRegister extends javax.swing.JFrame {
     }
 
     public static void setUser(String user) {
-        JRegister.user = user;
+        Register.user = user;
     }
 
     public static String getPass() {
@@ -26,13 +26,13 @@ public class JRegister extends javax.swing.JFrame {
     }
 
     public static void setPass(String pass) {
-        JRegister.pass = pass;
+        Register.pass = pass;
     }
 
     /**
      * Creates new form JRegister
      */
-    public JRegister() {
+    public Register() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -211,7 +211,7 @@ public class JRegister extends javax.swing.JFrame {
         if (acc.verifyRegister(user, pass, age1) == true) {
             JOptionPane.showMessageDialog(rootPane, "Successfully registered!");
             this.setVisible(false);
-            JLogin log = new JLogin();
+            Login log = new Login();
             log.setVisible(true);
         }else{
             this.setVisible(true);
@@ -242,7 +242,7 @@ public class JRegister extends javax.swing.JFrame {
 //                        String sql = "INSERT INTO `account`(`username`, `lname`, `fname`, `password`, `age`) VALUES ('" + user + "','" + lname + "','" + fname + "','" + pass + "'," + age + ")";
 //                        stmt.executeUpdate(sql);
 //                        JOptionPane.showMessageDialog(rootPane, "Customer Successfully Registered");
-//                        JLogin login = new JLogin();
+//                        Login login = new Login();
 //                        login.setVisible(true);
 //                        this.setVisible(false);
 //                        con.close();
@@ -269,7 +269,7 @@ public class JRegister extends javax.swing.JFrame {
     }//GEN-LAST:event_passFActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        JLogin log = new JLogin();
+        Login log = new Login();
         log.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel3MouseClicked
@@ -291,20 +291,21 @@ public class JRegister extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JRegister().setVisible(true);
+                new Register().setVisible(true);
 
             }
         });

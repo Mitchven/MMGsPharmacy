@@ -4,24 +4,24 @@ package Frames;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 
-public class JViewMed extends javax.swing.JFrame {
+public class ViewMedicine extends javax.swing.JFrame {
 
     /**
      * Creates new form JViewMed
      */
-    public JViewMed() {
+    public ViewMedicine() {
         initComponents();
         setLocationRelativeTo(null);
 //        this.setTitle("View Medicines");
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connectionToDB = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/luciferpharmacy", "root", "");
+            Connection connectionToDB = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/mmgspharmacy", "root", "");
             PreparedStatement preparedStatement = connectionToDB.prepareStatement("SELECT * FROM `medicine`");
             ResultSet resultSetForFullTable = preparedStatement.executeQuery();
             DefaultTableModel tm = (DefaultTableModel) viewMedTable.getModel();
             tm.setRowCount(0);
             while (resultSetForFullTable.next()) {
-                Object table[] = {resultSetForFullTable.getInt("Id"), resultSetForFullTable.getString("name"), resultSetForFullTable.getString("bname"), resultSetForFullTable.getString("gname"), resultSetForFullTable.getString("type"), resultSetForFullTable.getDouble("price"), resultSetForFullTable.getInt("stock")};
+                Object table[] = {resultSetForFullTable.getInt("ID"), resultSetForFullTable.getString("genericName"), resultSetForFullTable.getString("brandName"), resultSetForFullTable.getString("medicineType"), resultSetForFullTable.getDouble("price"), resultSetForFullTable.getInt("quantity")};
                 tm.addRow(table);
             }
         } catch (Exception e) {
@@ -94,17 +94,17 @@ public class JViewMed extends javax.swing.JFrame {
 
         viewMedTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Medicine Name", "Brand Name", "Generic Name", "Type", "Price", "Stock"
+                "ID", "Generic Name", "Brand Name", "Type", "Price", "Quantity"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -154,7 +154,7 @@ public class JViewMed extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        JAdminDash back = new JAdminDash();
+        PharmacistsDashboard back = new PharmacistsDashboard();
         back.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2MouseClicked
@@ -180,20 +180,21 @@ public class JViewMed extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JViewMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JViewMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JViewMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JViewMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JViewMed().setVisible(true);
+                new ViewMedicine().setVisible(true);
 
             }
         });

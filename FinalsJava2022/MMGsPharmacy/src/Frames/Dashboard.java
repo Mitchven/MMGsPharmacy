@@ -1,12 +1,12 @@
 
 package Frames;
 
-public class JDashboard extends javax.swing.JFrame {
+public class Dashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form JDashboard
      */
-    public JDashboard() {
+    public Dashboard() {
         initComponents();
     }
 
@@ -21,7 +21,7 @@ public class JDashboard extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        dashMunu = new javax.swing.JComboBox<>();
+        dashMunu = new javax.swing.JComboBox<String>();
         dashSearchbar = new javax.swing.JTextField();
         dashSearch = new javax.swing.JButton();
         dashSignOut = new javax.swing.JButton();
@@ -37,7 +37,7 @@ public class JDashboard extends javax.swing.JFrame {
 
         dashMunu.setBackground(new java.awt.Color(0, 255, 255));
         dashMunu.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        dashMunu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MENU", "Allergies Medicine", "Body Pain Medicine", "Headache Medicine" }));
+        dashMunu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MENU", "Allergies Medicine", "Body Pain Medicine", "Headache Medicine" }));
 
         dashSearch.setBackground(new java.awt.Color(0, 255, 255));
         dashSearch.setText("Search");
@@ -170,20 +170,21 @@ public class JDashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JDashboard().setVisible(true);
+                new Dashboard().setVisible(true);
             }
         });
     }

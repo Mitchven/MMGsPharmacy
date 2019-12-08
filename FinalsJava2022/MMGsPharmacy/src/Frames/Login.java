@@ -6,12 +6,12 @@ import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
-public class JLogin extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form JLogin
      */
-    public JLogin() {
+    public Login() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -180,53 +180,19 @@ public class JLogin extends javax.swing.JFrame {
 
         if (acc.logInVerification(Lacc, Lpass) == 500) {
             this.setVisible(false);
-            new JAdminDash().setVisible(true);
+            new PharmacistsDashboard().setVisible(true);
             JOptionPane.showMessageDialog(rootPane, "Logged in as administrator!");
         } else if (acc.logInVerification(Lacc, Lpass) == 600) {
             this.setVisible(false);
-            new JCustoDash(Lacc).setVisible(true);
+            new CustomerDashboard(Lacc).setVisible(true);
             JOptionPane.showMessageDialog(rootPane, "Logged in as customer!");
         } else {
             JOptionPane.showMessageDialog(rootPane, "Invalid Credentials", "Error", JOptionPane.ERROR_MESSAGE);
         }
-//        if (Lacc.equals("admin") && Lpass.equals("admin")) {
-//            JOptionPane.showMessageDialog(rootPane, "LogIn Successfully");
-//            System.out.println("Successfully Executed");
-//            this.setVisible(false);
-//            new JAdminDash().setVisible(true);
-//        } else {
-//            this.setVisible(true);
-//        }
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/luciferpharmacy", "root", "");
-//
-//            String query = "SELECT * FROM account where username = '" + Lacc + "' and password = '" + Lpass + "'";
-//            PreparedStatement p = con.prepareStatement(query);
-//            ResultSet select = p.executeQuery(query);
-//
-//            while (select.next()) {
-//                if (select.getString("username").equals(Lacc) && select.getString("password").equals(Lpass)) {
-//                    JOptionPane.showMessageDialog(rootPane, "LogIn Successfully");
-//                    System.out.println("Successfully Executed");
-//                    this.setVisible(false);
-//                    new JDashboard().setVisible(true);
-//                } else {
-//                    JOptionPane.showMessageDialog(rootPane, "Username and Password DID NOT MATCH ", "Error", JOptionPane.ERROR_MESSAGE);
-//                    System.out.println("Did not match anything");
-//                }
-//            }
-//            con.close();
-//
-//        } catch (HeadlessException | ClassNotFoundException | SQLException e) {
-//            System.out.println(e);
-//        }
-
-
     }//GEN-LAST:event_logSignInMouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        JRegister reg = new JRegister();
+        Register reg = new Register();
         reg.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel3MouseClicked
@@ -248,20 +214,21 @@ public class JLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JLogin().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
