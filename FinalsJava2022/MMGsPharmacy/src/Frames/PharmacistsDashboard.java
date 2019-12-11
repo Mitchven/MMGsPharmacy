@@ -157,7 +157,7 @@ public class PharmacistsDashboard extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(153, 255, 255));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel6.setText("5 --- Logout");
+        jLabel6.setText("4 --- Logout");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -261,7 +261,7 @@ public class PharmacistsDashboard extends javax.swing.JFrame {
             this.setVisible(false);
             this.setVisible(false);
         } else if (choices.equals("4")) {
-            Login log = new Login();
+            FirstPage log = new FirstPage();
             log.setVisible(true);
             this.setVisible(false);
         }

@@ -1,7 +1,7 @@
 
 package Frames;
 
-import Controller1.*;
+import Controller.Controller;
 import javax.swing.JOptionPane;
 
 public class Register extends javax.swing.JFrame {
@@ -217,50 +217,6 @@ public class Register extends javax.swing.JFrame {
             this.setVisible(true);
         }
 
-//        Statement stmt = null;
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/luciferpharmacy", "root", "");
-//            stmt = con.createStatement();
-//            ResultSet rs = stmt.executeQuery("SELECT * FROM `account` WHERE username='" + user + "'");
-//
-//            if (rs.next()) {
-//                JOptionPane.showMessageDialog(rootPane, "Username already existed!", "Error", JOptionPane.ERROR_MESSAGE);
-//            } else {
-//                System.out.println("successfully connected");
-//                if (user.length() > 0 && pass.length() >= 8 && fname.length() > 0 && lname.length() > 0) {
-//                    try {
-//                        age = Integer.parseInt(ageF.getText());
-//                        ageF.requestFocusInWindow();
-//                    } catch (NumberFormatException z) {
-//                        JOptionPane.showMessageDialog(rootPane, "Numbers Only", "Error", JOptionPane.ERROR_MESSAGE);
-//                        ageF.setText("");
-//                        ageF.requestFocusInWindow();
-//                        //return;
-//                    }
-//                    if (age >= 18 && age <= 150) {
-//                        String sql = "INSERT INTO `account`(`username`, `lname`, `fname`, `password`, `age`) VALUES ('" + user + "','" + lname + "','" + fname + "','" + pass + "'," + age + ")";
-//                        stmt.executeUpdate(sql);
-//                        JOptionPane.showMessageDialog(rootPane, "Customer Successfully Registered");
-//                        Login login = new Login();
-//                        login.setVisible(true);
-//                        this.setVisible(false);
-//                        con.close();
-//
-//                    } else {
-//                        System.out.println(age);
-//                        JOptionPane.showMessageDialog(rootPane, "We don't accept Minors", "Error", JOptionPane.ERROR_MESSAGE);
-//                        System.out.println(age);
-//                    }
-//
-//                } else {
-//                    JOptionPane.showMessageDialog(rootPane, "Fill Up Everything & Password must be at least 8 characters", "Error", JOptionPane.ERROR_MESSAGE);
-//                }
-//            }
-//
-//        } catch (HeadlessException | ClassNotFoundException | SQLException e) {
-//            System.out.println(e);
-//        }
 
     }//GEN-LAST:event_regSignUpMouseClicked
 

@@ -1,9 +1,6 @@
-
 package Frames;
 
-import Controller1.*;
-import java.awt.HeadlessException;
-import java.sql.*;
+import Controller.Controller;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -178,16 +175,22 @@ public class Login extends javax.swing.JFrame {
 
         Controller acc = new Controller();
 
-        if (acc.logInVerification(Lacc, Lpass) == 500) {
-            this.setVisible(false);
-            new PharmacistsDashboard().setVisible(true);
-            JOptionPane.showMessageDialog(rootPane, "Logged in as administrator!");
-        } else if (acc.logInVerification(Lacc, Lpass) == 600) {
-            this.setVisible(false);
-            new CustomerDashboard(Lacc).setVisible(true);
-            JOptionPane.showMessageDialog(rootPane, "Logged in as customer!");
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Invalid Credentials", "Error", JOptionPane.ERROR_MESSAGE);
+        switch (acc.logInVerification(Lacc, Lpass)) {
+            case 500:
+                this.setVisible(false);
+                new PharmacistsDashboard().setVisible(true);
+                JOptionPane.showMessageDialog(rootPane, "Logged in as administrator!");
+                break;
+            case 600:
+                this.setVisible(false);
+                CustomerDashboard cd = new CustomerDashboard();
+                this.setVisible(false);
+                cd.setVisible(true);
+                JOptionPane.showMessageDialog(rootPane, "Logged in as customer!");
+                break;
+            default:
+                JOptionPane.showMessageDialog(rootPane, "Invalid Credentials", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
         }
     }//GEN-LAST:event_logSignInMouseClicked
 

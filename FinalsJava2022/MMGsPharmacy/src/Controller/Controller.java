@@ -1,7 +1,7 @@
-package Controller1;
+package Controller;
 
+import Model.Model;
 import Frames.*;
-import Model1.*;
 import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -59,29 +59,29 @@ public class Controller {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/mmgspharmacy", "root", "");
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM `medicine` WHERE genericName='" + gname + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `medicine` WHERE Generic_Name='" + gname + "'");
 
             if (rs.next()) {
                 JOptionPane.showMessageDialog(a, "Medicine Name already existed!\nUpdate " + gname, "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 if (gname.length() > 0 && bname.length() > 0 && type.length() > 0) {
-                    if (type.matches("Headache Medicine") || type.matches("Allergies Medicine") || type.matches("Body Pain Medicine")) {
+                    if (type.matches("Medicine for Allergies") || type.matches("Medicine for Body Pain") || type.matches("Medicine for Cough") || type.matches("Medicine for Headache")) {
                         try {
-                            double price = Double.parseDouble(price1);
+                            int price = Integer.parseInt(price1);
                             try {
                                 int stock = Integer.parseInt(quantity);
                                 success = acc.addMedicine(gname, bname, type, price, stock);
                                 return success;
 
                             } catch (HeadlessException | NumberFormatException e) {
-                                JOptionPane.showMessageDialog(a, "Stock should be a number!", "Error", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(a, "Quantity should be a number!", "Error", JOptionPane.ERROR_MESSAGE);
                             }
 
                         } catch (HeadlessException | NumberFormatException e) {
                             JOptionPane.showMessageDialog(a, "Price should be a number!", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(a, "For Type\nChoose of the three 'Allergies Medicine' or 'Body Pain Medicine' or 'Headache Medicine' ", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(a, "For Type\nChoose of the four 'Medicine for Allergies' or 'Medicine for Body Pain' or 'Medicine for Headache' or 'Medicine for Cough' ", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
                     JOptionPane.showMessageDialog(a, "Fill Up Everything", "Error", JOptionPane.ERROR_MESSAGE);
@@ -146,8 +146,8 @@ public class Controller {
                     ResultSet rs = stmt.executeQuery("SELECT * FROM `medicine` WHERE ID='" + id + "'");
 
                     while (rs.next()) {
-                        int stock = rs.getInt("quantity");
-                        double price = rs.getDouble("price");
+                        int stock = rs.getInt("Quantity");
+                        double price = rs.getDouble("Price");
                         if (rs.getInt("ID") == id) {
                             exist = true;
                             return success = acc.purchase(uname, id, qty);

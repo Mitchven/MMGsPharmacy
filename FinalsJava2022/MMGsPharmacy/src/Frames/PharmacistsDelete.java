@@ -1,7 +1,7 @@
 
 package Frames;
 
-import Controller1.Controller;
+import Controller.Controller;
 import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.JOptionPane;

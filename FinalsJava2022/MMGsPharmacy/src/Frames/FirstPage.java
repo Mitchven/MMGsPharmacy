@@ -123,7 +123,7 @@ public class FirstPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinMouseClicked
-        // TODO add your handling code here:
+
         Login log = new Login();
         log.setVisible(true);
         this.setVisible(false);
@@ -170,6 +170,7 @@ public class FirstPage extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new FirstPage().setVisible(true);
             }

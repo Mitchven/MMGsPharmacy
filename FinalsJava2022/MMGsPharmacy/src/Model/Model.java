@@ -1,4 +1,4 @@
-package Model1;
+package Model;
 
 import Frames.*;
 import java.awt.HeadlessException;
@@ -58,14 +58,14 @@ public class Model {
         return success;
     }
 
-    public boolean addMedicine(String gname, String bname, String type, double price, int quantity) {
+    public boolean addMedicine(String gname, String bname, String type, int price, int quantity) {
         PharmacistsAdd a = new PharmacistsAdd();
         boolean success = false;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/mmgspharmacy", "root", "");
             Statement stmt = con.createStatement();
-            String sql = "INSERT INTO `medicine`( `genericName`, `brandName`, `medicineType`, `price`, `quantity`) VALUES ('" + gname + "','" + bname + "','" + type + "','" + price + "'," + quantity + ")";
+            String sql = "INSERT INTO `medicine`( Generic_Name`, `Brand_Name`, `MedicineType`, `Price`, `Quantity`) VALUES ('" + gname + "','" + bname + "','" + type + "','" + price + "'," + quantity + ")";
             stmt.executeUpdate(sql);
             success = true;
             con.close();
@@ -90,7 +90,8 @@ public class Model {
         }
         return success;
     }
-     public boolean purchase(String uname, int id, int qty) {
+
+    public boolean purchase(String uname, int id, int qty) {
 
         boolean success = false;
         try {
@@ -100,9 +101,14 @@ public class Model {
             ResultSet rs = stmt.executeQuery("SELECT * FROM `medicine` WHERE ID=" + id);
             System.out.println("nakasulod");
             while (rs.next()) {
-                int stock = rs.getInt("quantity");
-                double price = rs.getDouble("price");
+                int stock = rs.getInt("Quantity");
+                double price = rs.getDouble("Price");
                 if (rs.getInt("ID") == id) {
+                    String gname = rs.getString("Generic_Name");
+                    String bname = rs.getString("Brand_Name");
+                    String medType = rs.getString("MedicineType");
+                    System.out.println(price+10);
+                    
                     ResultSet rs1 = stmt.executeQuery("SELECT * FROM `user`");
                     while (rs1.next()) {
                         int age = rs1.getInt("age");
@@ -116,59 +122,63 @@ public class Model {
                                         System.out.println(age);
                                         System.out.println(" equal then " + (qty * price));
                                         JOptionPane.showMessageDialog(null, "The amount is: " + (qty * price));
+                                        String sql1 = "INSERT INTO `orderline`(`username`, `genericName`, `brandName`, `medicineType`, `price`, `quantity`) VALUES ('" + uname + "','" + gname + "','" + bname + "','" + medType + "'," + (qty*price) + "," + stock+")";
                                         String sql = "DELETE FROM `medicine` WHERE ID='" + id + "'";
                                         stmt.addBatch(sql);
+                                        stmt.addBatch(sql1);
                                         stmt.executeBatch();
-                                        con.close();
                                         return success = true;
                                     } else {
                                         System.out.println(age);
                                         System.out.println(" equal then senior " + ((qty * price) * .80));
                                         JOptionPane.showMessageDialog(null, "The amount is: " + ((qty * price) * .80));
+                                        String sql1 = "INSERT INTO `orderline`(`username`, `genericName`, `brandName`, `medicineType`, `price`, `quantity`) VALUES ('" + uname + "','" + gname + "','" + bname + "','" + medType + "'," + ((qty*price)*80) + "," + stock+")";
                                         String sql = "DELETE FROM `medicine` WHERE ID='" + id + "'";
+                                        System.out.println("Nagbasa siya dito");
                                         stmt.addBatch(sql);
+                                        stmt.addBatch(sql1);
                                         stmt.executeBatch();
-                                        con.close();
                                         return success = true;
                                     }
-                                }
-
-                            } else {
+                                } } else {
 
                                 if (age >= 18 && age <= 59) {
                                     System.out.println(age);
                                     System.out.println(" not equal then " + (qty * price));
                                     JOptionPane.showMessageDialog(null, "The amount is: " + (qty * price));
-                                    String sql = "UPDATE `medicine` SET `quantity`=" + (stock - qty) + " WHERE ID='" + id + "'";
+                                    String sql1 = "INSERT INTO `orderline`(`username`, `genericName`, `brandName`, `medicineType`, `price`, `quantity`) VALUES ('" + uname + "','" + gname + "','" + bname + "','" + medType + "'," + (qty*price) + "," + stock+")";
+                                    System.out.println("nagread siya!");
+                                    String sql = "UPDATE `medicine` SET `Quantity`=" + (stock - qty) + " WHERE ID='" + id + "'";
                                     stmt.addBatch(sql);
+                                    stmt.addBatch(sql1);
                                     stmt.executeBatch();
-                                    con.close();
                                     return success = true;
                                 } else {
                                     System.out.println(age);
                                     System.out.println(" not equal then senior " + ((qty * price) * .80));
                                     JOptionPane.showMessageDialog(null, "The amount is: " + ((qty * price) * .80));
-                                    String sql = "UPDATE `medicine` SET `quantity`=" + (stock - qty) + " WHERE ID='" + id + "'";
+                                    String sql1 = "INSERT INTO `orderline`(`username`, `genericName`, `brandName`, `medicineType`, `price`, `quantity`) VALUES ('" + uname + "','" + gname + "','" + bname + "','" + medType + "'," + ((qty*price)*80) + "," + stock+")";
+                                    String sql = "UPDATE `medicine` SET `Quantity`=" + (stock - qty) + " WHERE ID='" + id + "'";
+                                    System.out.println("DITO SIYA NAGBASA");
                                     stmt.addBatch(sql);
+                                    stmt.addBatch(sql1);
                                     stmt.executeBatch();
-                                    con.close();
                                     return success = true;
                                 }
                             }
+                            break;
                         }
-
                     }
                     break;
                 }
-                con.close();
             }
-
+            con.close();
         } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
             JOptionPane.showMessageDialog(null, "Error connecting to database!");
         }
         return success;
 
     }
-
 
 }
